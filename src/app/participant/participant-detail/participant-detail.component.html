@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="modal-header">
+    <h4 class="modal-title">Details</h4>
+    <button type="button" class="close" aria-label="Close" (click)="onCancel()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Voornaam: {{participant.Voornaam}}</p>
+    <p>Achternaam: {{participant.Achternaam}}</p>
+    <p>Omschrijving: {{participant.Omschrijving}}</p>
+    <p>Gekozen Goed Doel: {{participant.GoedDoelNaam}}</p>
+    <p>omschrijving goed doel: {{participant.GoedDoelOmschrijving}}</p>
+    <p>naar goed doel:<a class="btn-link" href="http://{{participant.GoedDoelLink}}"> Link</a></p>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="onCancel()">close</button>
+    <button type="button" class="btn btn-success" (click)="onSponsor(participant.id)">Sponser Deelnemer</button>
+  </div>
+</div>

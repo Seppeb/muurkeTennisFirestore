@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  firebaseConfig: {
+    apiKey: 'AIzaSyA8CVXhI9aWB78Ierh5sb5cgBwvlW73NRk',
+    authDomain: 'muurketennis.firebaseapp.com',
+    databaseURL: 'https://muurketennis.firebaseio.com',
+    projectId: 'muurketennis',
+    storageBucket: 'muurketennis.appspot.com',
+    messagingSenderId: '284175778964',
+    appId: '1:284175778964:web:0ab2c61ced1751a2'
+  }
 };
 
 /*

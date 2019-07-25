@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="card-body">
+    <h6 class="card-title">{{sponsor.Voornaam | titlecase}} {{sponsor.Achternaam | titlecase}}</h6>
+    <p class="card-text">{{sponsor.Boodschap}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Goede Doel: {{participant.GoedDoelNaam}}</li>
+    <li class="list-group-item">Gesponserde
+      persoon: {{participant.Voornaam | titlecase}} {{participant.Achternaam | titlecase}}</li>
+    <li class="list-group-item">Bedrag: {{sponsor.Bedrag | currency: 'EUR'}}</li>
+  </ul>
+  <!--check if it's admin. -->
+  <div class="card-footing text-muted">
+    <div class="btn-group">
+      <a type="button" class="btn btn btn-outline-secondary">Edit</a>
+      <a type="button" class="btn btn btn-outline-danger">Delete</a>
+    </div>
+  </div>
+</div>
+

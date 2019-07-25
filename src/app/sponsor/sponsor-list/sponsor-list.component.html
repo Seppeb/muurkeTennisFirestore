@@ -1,0 +1,22 @@
+<div class="input-group">
+  <select
+    class="custom-select">
+    <option value="" disabled>Kies Deelnemer</option>
+    <option
+      *ngFor="let participant of participants">
+      {{participant.Voornaam | titlecase}}
+      {{participant.Achternaam | titlecase}}
+    </option>
+  </select>
+  <button class="btn btn-success" (click)="addSponsor(participantId)">Sponsor participant</button>
+</div>
+<hr>
+
+<div class="container">
+  <app-sponsor-item
+    class="item"
+    *ngFor="let sponsor of sponsors; let i = index"
+    [sponsor]="sponsor"
+    [index]="i"
+  ></app-sponsor-item>
+</div>

@@ -1,0 +1,10 @@
+.container {
+  display: flex; /* or inline-flex */
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.item {
+  margin: 2px;
+}

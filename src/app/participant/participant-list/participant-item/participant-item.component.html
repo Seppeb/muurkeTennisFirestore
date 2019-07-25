@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{participant.Voornaam | titlecase}}  {{participant.Achternaam | titlecase}}</h5>
+    <h6 class="card-subtitle mb-2">Goede doel: {{participant.GoedDoelNaam }}</h6>
+    <h6 class="card-subtitle mb-2">Ingezamelde Geld: </h6>
+    <div class="btn-group">
+      <a class="card-link btn btn-outline-primary" (click)="onDetail(participant)">Details</a>
+      <a class="card-link btn btn-outline-info" (click)="onSponsor(participant.id)">Sponsor</a>
+    </div>
+    <!--hier check doen of admin aangemeld is of persoon zijn eigen goed doel.-->
+    <div class="btn-group">
+      <a class="card-link btn btn-outline-secondary" (click)="onEdit(participant)">Edit</a>
+      <a class="card-link btn btn-outline-danger" (click)="onDelete(participant.id)">Delete</a>
+    </div>
+  </div>
+</div>
+
