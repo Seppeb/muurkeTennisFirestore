@@ -14,6 +14,8 @@ import {environment} from '../environments/environment';
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
 import {SponsorAddComponent} from './sponsor/sponsor-add/sponsor-add.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AuthService} from './admin/auth.service';
 
 @NgModule({
   declarations: [
@@ -31,11 +33,12 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   entryComponents: [ConfirmationDialogComponent, SponsorAddComponent],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

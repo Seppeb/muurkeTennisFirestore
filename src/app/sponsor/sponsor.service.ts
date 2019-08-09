@@ -26,6 +26,10 @@ export class SponsorService {
 
   fetchSponsorsByParticipant(participantid: string) {
     return this.afs.collection<Sponsor>('sponsor', ref => ref.where('ParticipantId', '==', participantid))
-      .valueChanges().pipe(flatMap(sponsor => sponsor));
+      .snapshotChanges();
+  }
+
+  deleteSponsor(sponsorId: string) {
+    this.afs.doc('sponsor/' + sponsorId).delete();
   }
 }

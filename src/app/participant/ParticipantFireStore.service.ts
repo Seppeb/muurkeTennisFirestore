@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Participant} from './participant.model';
 import {Subject} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class ParticipantFireStoreService {
@@ -41,11 +42,13 @@ export class ParticipantFireStoreService {
 
   // firebase actions
   fetchParticipants() {
-    return this.afs.collection('participant').snapshotChanges();
+    return this.afs.collection('participant')
+      .snapshotChanges();
   }
 
   fetchParticipantById(participantId: string) {
-    return this.afs.collection('participant').doc(participantId).snapshotChanges();
+    return this.afs.collection('participant').doc(participantId)
+      .snapshotChanges();
   }
 
   storeNewParticipant(participant: Participant) {

@@ -26,6 +26,11 @@ export class SponsorListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.getSponsors();
+    this.getParticipants();
+  }
+
+  getSponsors() {
     this.subscription = this.sponsorService.fetchSponsors()
       .subscribe(sponsors => {
         this.sponsors = sponsors
@@ -36,11 +41,15 @@ export class SponsorListComponent implements OnInit, OnDestroy {
             } as Sponsor;
           });
       });
+  }
+
+  getParticipants() {
     this.subscriptionParticiants = this.participantFireStore.fetchParticipants()
       .subscribe(partis => {
         this.participants = partis
           .map(e => {
             return {
+              id: e.payload.doc.id,
               ...e.payload.doc.data()
             } as Participant;
           });
@@ -49,10 +58,8 @@ export class SponsorListComponent implements OnInit, OnDestroy {
   }
 
   addSponsor(participantId: string) {
-    console.log(participantId);
-    // parrticipant id nog uit select krijgen en meegeven aan addsponsor.
-    // const modalref = this.modalService.open(SponsorAddComponent);
-    // modalref.componentInstance.participantId = participantId;
+    const modalRef = this.modalService.open(SponsorAddComponent);
+    modalRef.componentInstance.participantId = participantId;
   }
 
   ngOnDestroy(): void {

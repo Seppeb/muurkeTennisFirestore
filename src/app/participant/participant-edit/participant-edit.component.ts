@@ -79,9 +79,9 @@ export class ParticipantEditComponent implements OnInit {
       voornaam: new FormControl(participantVoornaam, Validators.required),
       achternaam: new FormControl(participantAchternaam, Validators.required),
       omschrijving: new FormControl(participantOmschrijving),
-      goedDoelnaam: new FormControl(GoedeDoelNaam),
+      goedDoelnaam: new FormControl(GoedeDoelNaam, Validators.required),
       goedDoelomschrijving: new FormControl(GoedeDoelOmschrijving),
-      goedDoellink: new FormControl(GoedeDoelLink)
+      goedDoellink: new FormControl(GoedeDoelLink, Validators.required)
     });
   }
 }

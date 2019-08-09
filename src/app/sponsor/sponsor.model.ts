@@ -4,7 +4,7 @@ export class Sponsor {
   boodschap?: string;
   bedrag: number;
   participantId: string;
-  id?: string
+  id?: string;
 
   constructor(
     private Achternaam: string,

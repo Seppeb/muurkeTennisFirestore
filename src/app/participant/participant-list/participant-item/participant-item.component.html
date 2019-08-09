@@ -1,17 +1,44 @@
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">{{participant.Voornaam | titlecase}}  {{participant.Achternaam | titlecase}}</h5>
-    <h6 class="card-subtitle mb-2">Goede doel: {{participant.GoedDoelNaam }}</h6>
-    <h6 class="card-subtitle mb-2">Ingezamelde Geld: </h6>
-    <div class="btn-group">
-      <a class="card-link btn btn-outline-primary" (click)="onDetail(participant)">Details</a>
-      <a class="card-link btn btn-outline-info" (click)="onSponsor(participant.id)">Sponsor</a>
-    </div>
-    <!--hier check doen of admin aangemeld is of persoon zijn eigen goed doel.-->
-    <div class="btn-group">
-      <a class="card-link btn btn-outline-secondary" (click)="onEdit(participant)">Edit</a>
-      <a class="card-link btn btn-outline-danger" (click)="onDelete(participant.id)">Delete</a>
+<div class="container-fluidt">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{participant.Voornaam | titlecase}}  {{participant.Achternaam | titlecase}}</h5>
+      <h6 class="card-subtitle mb-2">Goede doel: {{participant.GoedDoelNaam }}</h6>
+      <h6 class="card-subtitle mb-2">Ingezamelde Geld: </h6>
+      <div class="btn-group">
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="isCollapsed"
+          aria-controls="collapseDetails">
+          Details
+        </button>
+        <a class="card-link btn btn-outline-info" (click)="onSponsor(participant.id)">Sponsor</a>
+      </div>
+      <div class="btn-group" *ngIf="authService.isLoggedIn">
+        <a class="card-link btn btn-outline-secondary" (click)="onEdit(participant)">Edit</a>
+        <a class="card-link btn btn-outline-danger" (click)="onDelete(participant.id)">Delete</a>
+      </div>
+
+      <div id="collapseDetails" [ngbCollapse]="isCollapsed">
+        <div class="card">
+          <p>Voornaam: {{participant.Voornaam}}</p>
+          <p>Achternaam: {{participant.Achternaam}}</p>
+          <p>Omschrijving: {{participant.Omschrijving}}</p>
+          <p>Goede doel: {{participant.GoedDoelNaam}} <a href="http://{{participant.GoedDoelLink}}">Link</a></p>
+          <p>Omschrijving goede doel: {{participant.GoedDoelOmschrijving}}</p>
+          <p *ngIf="sponsors">Sponsors: </p>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let sponsor of sponsors">
+              {{sponsor.Voornaam | titlecase}} {{sponsor.Achternaam | titlecase}} {{ sponsor.Bedrag | currency:'EUR'}}
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <button type="button" class="btn btn-danger" (click)="isCollapsed = !isCollapsed">close</button>
+          <button type="button" class="btn btn-secondary" (click)="onSponsor(participant.id)">Sponser Deelnemer</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-

@@ -23,12 +23,8 @@ export class SponsorAddComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    if (this.editSponsor) {
-      this.editMode = true;
-    } else {
-      this.editMode = false;
-    }
+    this.editMode = !!this.editSponsor;
+    console.log(this.editSponsor);
     this.initForm();
   }
 
@@ -39,10 +35,10 @@ export class SponsorAddComponent implements OnInit {
     let sponsorHoeveelheid = 0;
     if (this.editMode) {
       const sponsor = this.editSponsor;
-      sponsorVoornaam = sponsor.voornaam;
-      sponsorAchternaam = sponsor.achternaam;
-      sponsorBoodschap = sponsor.boodschap;
-      sponsorHoeveelheid = sponsor.amount;
+      sponsorVoornaam = sponsor.Voornaam;
+      sponsorAchternaam = sponsor.Achternaam;
+      sponsorBoodschap = sponsor.Boodschap;
+      sponsorHoeveelheid = sponsor.Bedrag;
     }
     this.sponsorForm = new FormGroup({
       voornaam: new FormControl(sponsorVoornaam, Validators.required),
@@ -64,6 +60,7 @@ export class SponsorAddComponent implements OnInit {
 
   onSubmit() {
     if (this.editMode) {
+      this.participantId = this.editSponsor.ParticipantId;
       this.createSponsor();
       this.sponsorService.updateSponsor(this.sponsor, this.editSponsor.id);
     } else {

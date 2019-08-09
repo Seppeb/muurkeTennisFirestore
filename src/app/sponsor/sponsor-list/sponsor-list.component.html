@@ -1,18 +1,19 @@
 <div class="input-group">
-  <select
+  <select #selectedParticipant
     class="custom-select">
-    <option value="" disabled>Kies Deelnemer</option>
+    <option disabled>Kies Deelnemer</option>
     <option
+      [value]="participant.id"
       *ngFor="let participant of participants">
       {{participant.Voornaam | titlecase}}
       {{participant.Achternaam | titlecase}}
     </option>
   </select>
-  <button class="btn btn-success" (click)="addSponsor(participantId)">Sponsor participant</button>
+  <button class="btn btn-success" (click)="addSponsor(selectedParticipant.value)">Sponsor participant</button>
 </div>
 <hr>
 
-<div class="container">
+<div class="container-fluid">
   <app-sponsor-item
     class="item"
     *ngFor="let sponsor of sponsors; let i = index"

@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
+import {GuardGuard} from './admin/guard.guard';
 import {HomeComponent} from './home/home.component';
 
 const routes: Routes = [
@@ -17,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'sponsor',
-    loadChildren: './sponsor/sponsor.module#SponsorModule'
+    loadChildren: './sponsor/sponsor.module#SponsorModule',
   },
   {
     path: 'goedeDoelen',
@@ -31,4 +32,5 @@ const routes: Routes = [
       routes, {preloadingStrategy: PreloadAllModules})],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
